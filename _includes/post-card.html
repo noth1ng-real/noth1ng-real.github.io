@@ -3,7 +3,7 @@
 {% assign card_minutes = card_words | divided_by: 200 %}
 {% if card_minutes == 0 %}{% assign card_minutes = 1 %}{% endif %}
 
-<article class="post-card{% if include.featured %} post-card-featured{% endif %}">
+<article class="post-card{% if include.featured %} post-card-featured{% endif %}{% if card_post.image %} post-card-has-image{% endif %}">
   {% if card_post.image %}
     <a class="post-card-image" href="{{ card_post.url | relative_url }}" tabindex="-1" aria-hidden="true">
       <img src="{{ card_post.image | relative_url }}" alt="" loading="lazy">
@@ -33,6 +33,10 @@
           <a href="{{ "/tags/" | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>
         {% endfor %}
       </div>
+    {% endif %}
+
+    {% if include.featured %}
+      <a class="post-card-cta" href="{{ card_post.url | relative_url }}">Read article <span aria-hidden="true">→</span></a>
     {% endif %}
   </div>
 </article>

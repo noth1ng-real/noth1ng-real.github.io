@@ -165,28 +165,48 @@ a:focus-visible {
 .post-card-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  column-gap: 48px;
+  row-gap: 40px;
 }
 
 .post-card {
-  overflow: hidden;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  min-width: 0;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
 }
 
 .post-card-featured {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  background: linear-gradient(135deg, var(--surface-raised), var(--surface));
-  border-color: #2a3952;
+  padding: clamp(32px, 5vw, 56px) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.post-card-featured::before {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 72px;
+  height: 2px;
+  background: var(--accent);
+  content: "";
+}
+
+.post-card-featured.post-card-has-image {
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  gap: clamp(36px, 6vw, 72px);
+  align-items: center;
 }
 
 .post-card-image {
   display: block;
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--code);
+  border: 1px solid var(--border);
+  border-radius: 4px;
 }
 
 .post-card-image img {
@@ -201,11 +221,21 @@ a:focus-visible {
 }
 
 .post-card-body {
-  padding: 26px;
+  padding: 0;
 }
 
 .post-card-featured .post-card-body {
-  padding: clamp(28px, 5vw, 48px);
+  padding: 0;
+}
+
+.post-card-featured.post-card-has-image .post-card-image {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.post-card-featured.post-card-has-image .post-card-body {
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .post-card-meta {
@@ -217,16 +247,17 @@ a:focus-visible {
 }
 
 .post-card-title {
-  margin: 8px 0 0;
-  font-size: clamp(22px, 3vw, 30px);
+  margin: 9px 0 0;
+  font-size: clamp(22px, 3vw, 28px);
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.25;
 }
 
 .post-card-featured .post-card-title {
-  max-width: 850px;
-  font-size: clamp(28px, 5vw, 44px);
+  max-width: 900px;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.12;
 }
 
 .post-card-title a,
@@ -247,6 +278,12 @@ a:focus-visible {
   line-height: 1.65;
 }
 
+.post-card-featured .post-card-excerpt {
+  max-width: 680px;
+  margin-top: 16px;
+  font-size: 16px;
+}
+
 .post-tags {
   display: flex;
   flex-wrap: wrap;
@@ -257,19 +294,50 @@ a:focus-visible {
 .post-tags a,
 .post-tags a:visited,
 .post-tags span {
-  padding: 3px 9px;
+  padding: 0;
   color: var(--muted);
-  background: rgba(91, 141, 239, 0.07);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  font-size: 11px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
   line-height: 1.5;
   text-decoration: none;
 }
 
+.post-tags a::before,
+.post-tags span::before {
+  color: var(--accent);
+  content: "#";
+}
+
 .post-tags a:hover {
   color: var(--accent-bright);
-  border-color: #3b5278;
+}
+
+.post-card-cta,
+.post-card-cta:visited {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 28px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.post-card-cta span {
+  color: var(--accent);
+  transition: transform 150ms ease;
+}
+
+.post-card-cta:hover {
+  color: var(--accent-bright);
+}
+
+.post-card-cta:hover span {
+  transform: translateX(3px);
 }
 
 .home .feed-subscribe,
@@ -852,7 +920,25 @@ hr {
 
   .post-card-body,
   .post-card-featured .post-card-body {
-    padding: 22px;
+    padding: 0;
+  }
+
+  .post-card-featured.post-card-has-image {
+    grid-template-columns: 1fr;
+  }
+
+  .post-card-featured.post-card-has-image .post-card-image,
+  .post-card-featured.post-card-has-image .post-card-body {
+    grid-column: 1;
+  }
+
+  .post-card-featured.post-card-has-image .post-card-image {
+    grid-row: 2;
+    margin-top: 26px;
+  }
+
+  .post-card-featured.post-card-has-image .post-card-body {
+    grid-row: 1;
   }
 
   .tag-post {
