@@ -1,5 +1,7 @@
 ---
 layout: home
+title: Home
+list_title: Recent writing
 ---
 
-https's blog
+Thoughts on technology, the internet, and whatever else seems worth writing down.

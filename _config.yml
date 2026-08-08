@@ -1,3 +1,25 @@
-title: https's blog
-description: hi
+title: "https's blog"
+description: ""
 theme: minima
+
+# Pages shown in the site navigation.
+header_pages:
+  - about.md
+  - archive.md
+
+# Use clean URLs such as /2026/08/my-post/.
+permalink: /:year/:month/:title/
+
+# Reuse the post layout so new posts only need a title and date.
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+show_excerpts: true
