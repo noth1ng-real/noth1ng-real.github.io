@@ -6,6 +6,8 @@ theme: minima
 header_pages:
   - about.md
   - archive.md
+  - tags.md
+  - search.md
 
 # Use clean URLs such as /2026/08/my-post/.
 permalink: /:year/:month/:title/

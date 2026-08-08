@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<div class="home">
+  {% if content != empty %}
+    <div class="home-intro">{{ content }}</div>
+  {% endif %}
+
+  {% assign selected_featured = site.posts | where: "featured", true | first %}
+  {% assign featured_post = selected_featured | default: site.posts.first %}
+
+  {% if featured_post %}
+    <section class="home-section" aria-labelledby="featured-heading">
+      <div class="section-heading-row">
+        <h1 id="featured-heading" class="section-heading">Featured</h1>
+      </div>
+      {% include post-card.html post=featured_post featured=true %}
+    </section>
+  {% endif %}
+
+  {% if site.posts.size > 1 %}
+    <section class="home-section" aria-labelledby="recent-heading">
+      <div class="section-heading-row">
+        <h2 id="recent-heading" class="section-heading">Recent posts</h2>
+        <a href="{{ "/archive/" | relative_url }}">View archive →</a>
+      </div>
+
+      <div class="post-card-grid">
+        {% for post in site.posts %}
+          {% unless post.url == featured_post.url %}
+            {% include post-card.html post=post %}
+          {% endunless %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+</div>

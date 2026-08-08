@@ -1,0 +1,38 @@
+{% assign card_post = include.post %}
+{% assign card_words = card_post.content | number_of_words %}
+{% assign card_minutes = card_words | divided_by: 200 %}
+{% if card_minutes == 0 %}{% assign card_minutes = 1 %}{% endif %}
+
+<article class="post-card{% if include.featured %} post-card-featured{% endif %}">
+  {% if card_post.image %}
+    <a class="post-card-image" href="{{ card_post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+      <img src="{{ card_post.image | relative_url }}" alt="" loading="lazy">
+    </a>
+  {% endif %}
+
+  <div class="post-card-body">
+    <div class="post-card-meta">
+      <time datetime="{{ card_post.date | date_to_xmlschema }}">{{ card_post.date | date: "%b %-d, %Y" }}</time>
+      <span aria-hidden="true">·</span>
+      <span>{{ card_minutes }} min read</span>
+    </div>
+
+    <h2 class="post-card-title">
+      <a href="{{ card_post.url | relative_url }}">{{ card_post.title | escape }}</a>
+    </h2>
+
+    {% if card_post.description %}
+      <p class="post-card-excerpt">{{ card_post.description | escape }}</p>
+    {% elsif card_post.excerpt %}
+      <p class="post-card-excerpt">{{ card_post.excerpt | strip_html | normalize_whitespace | truncatewords: 32 }}</p>
+    {% endif %}
+
+    {% if card_post.tags.size > 0 %}
+      <div class="post-tags" aria-label="Tags">
+        {% for tag in card_post.tags %}
+          <a href="{{ "/tags/" | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</article>
