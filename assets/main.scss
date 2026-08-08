@@ -36,9 +36,9 @@ body {
 }
 
 .wrapper {
-  max-width: 760px;
-  padding-right: 28px;
-  padding-left: 28px;
+  max-width: 1180px;
+  padding-right: 40px;
+  padding-left: 40px;
 }
 
 a {
@@ -106,16 +106,20 @@ a:focus-visible {
 }
 
 .page-content {
-  padding: 64px 0 80px;
+  padding: 72px 0 96px;
 }
 
 .home > p:first-child {
-  max-width: 620px;
+  max-width: 780px;
   margin: 0 0 64px;
   color: var(--muted);
   font-size: clamp(20px, 3vw, 27px);
   line-height: 1.55;
   letter-spacing: -0.025em;
+}
+
+.home .feed-subscribe {
+  display: none;
 }
 
 .home .post-list-heading {
@@ -281,28 +285,29 @@ hr {
 }
 
 .site-footer {
-  padding: 32px 0;
+  padding: 20px 0;
   color: var(--muted);
-  background: var(--surface);
+  background: var(--background);
   border-top: 1px solid var(--border);
   font-size: 14px;
 }
 
-.footer-heading {
-  color: var(--text);
-  font-size: 16px;
-}
-
-.footer-col-wrapper,
-.social-media-list a,
-.social-media-list a:visited,
-.contact-list a,
-.contact-list a:visited {
+.footer-line {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0;
   color: var(--muted);
 }
 
-.svg-icon {
-  fill: var(--muted);
+.footer-line a,
+.footer-line a:visited {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.footer-line a:hover {
+  color: var(--accent-bright);
 }
 
 @media screen and (max-width: 600px) {
@@ -348,6 +353,13 @@ hr {
 
   .home > p:first-child {
     margin-bottom: 48px;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1200px) {
+  .wrapper {
+    padding-right: 32px;
+    padding-left: 32px;
   }
 }
 
