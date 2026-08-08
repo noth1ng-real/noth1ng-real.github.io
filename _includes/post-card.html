@@ -30,13 +30,9 @@
     {% if card_post.tags.size > 0 %}
       <div class="post-tags" aria-label="Tags">
         {% for tag in card_post.tags %}
-          <a href="{{ "/tags/" | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>
+          <a href="{{ "/archive/" | relative_url }}?tag={{ tag | slugify }}">{{ tag }}</a>
         {% endfor %}
       </div>
-    {% endif %}
-
-    {% if include.featured %}
-      <a class="post-card-cta" href="{{ card_post.url | relative_url }}">Read article <span aria-hidden="true">→</span></a>
     {% endif %}
   </div>
 </article>

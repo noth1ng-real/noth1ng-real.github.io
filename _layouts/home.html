@@ -7,8 +7,7 @@ layout: default
     <div class="home-intro">{{ content }}</div>
   {% endif %}
 
-  {% assign selected_featured = site.posts | where: "featured", true | first %}
-  {% assign featured_post = selected_featured | default: site.posts.first %}
+  {% assign featured_post = site.posts | where: "featured", true | first %}
 
   {% if featured_post %}
     <section class="home-section" aria-labelledby="featured-heading">
@@ -19,7 +18,7 @@ layout: default
     </section>
   {% endif %}
 
-  {% if site.posts.size > 1 %}
+  {% if site.posts.size > 0 %}
     <section class="home-section" aria-labelledby="recent-heading">
       <div class="section-heading-row">
         <h2 id="recent-heading" class="section-heading">Recent posts</h2>
@@ -27,10 +26,12 @@ layout: default
       </div>
 
       <div class="post-card-grid">
+        {% assign recent_count = 0 %}
         {% for post in site.posts %}
-          {% unless post.url == featured_post.url %}
-            {% include post-card.html post=post %}
-          {% endunless %}
+          {% if post.url != featured_post.url and recent_count < 6 %}
+              {% include post-card.html post=post %}
+              {% assign recent_count = recent_count | plus: 1 %}
+          {% endif %}
         {% endfor %}
       </div>
     </section>
