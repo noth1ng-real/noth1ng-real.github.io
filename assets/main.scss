@@ -174,6 +174,89 @@ a:focus-visible {
   margin-bottom: 48px;
 }
 
+.reading-progress {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  pointer-events: none;
+}
+
+.reading-progress-bar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(91, 141, 239, 0.45);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.post-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 820px) minmax(180px, 240px);
+  gap: clamp(56px, 7vw, 96px);
+  align-items: start;
+}
+
+.post-layout-no-toc {
+  grid-template-columns: minmax(0, 820px);
+}
+
+.post-main {
+  min-width: 0;
+}
+
+.post-toc-inner {
+  position: sticky;
+  top: 112px;
+}
+
+.post-toc-title {
+  margin: 0 0 14px;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.toc-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-left: 14px;
+  border-left: 1px solid var(--border);
+}
+
+.toc-nav a,
+.toc-nav a:visited {
+  padding: 5px 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+  text-decoration: none;
+}
+
+.toc-nav a:hover,
+.toc-nav a.is-active {
+  color: var(--accent-bright);
+}
+
+.toc-nav a.is-active {
+  font-weight: 600;
+}
+
+.toc-nav .toc-subitem {
+  padding-left: 14px;
+}
+
+.post-toc-mobile {
+  display: none;
+}
+
 .post-title,
 .page-heading,
 .post-content h1,
@@ -198,11 +281,30 @@ a:focus-visible {
 .post-content h2 {
   margin-top: 2.1em;
   font-size: 28px;
+  scroll-margin-top: 100px;
 }
 
 .post-content h3 {
   margin-top: 1.8em;
   font-size: 22px;
+  scroll-margin-top: 100px;
+}
+
+.heading-anchor,
+.heading-anchor:visited {
+  margin-left: 10px;
+  color: var(--muted);
+  font-size: 0.7em;
+  font-weight: 500;
+  text-decoration: none;
+  opacity: 0;
+}
+
+.post-content h2:hover .heading-anchor,
+.post-content h3:hover .heading-anchor,
+.heading-anchor:focus-visible {
+  color: var(--accent-bright);
+  opacity: 1;
 }
 
 .post-content p,
@@ -241,6 +343,75 @@ pre {
 pre code {
   padding: 0;
   border: 0;
+}
+
+.code-copy-host {
+  position: relative;
+}
+
+.copy-code-button {
+  position: absolute;
+  z-index: 2;
+  top: 9px;
+  right: 9px;
+  padding: 5px 9px;
+  color: var(--muted);
+  background: rgba(8, 11, 17, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font: inherit;
+  font-size: 11px;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.copy-code-button:hover,
+.copy-code-button:focus-visible {
+  color: var(--accent-bright);
+  border-color: var(--accent);
+}
+
+.post-navigation {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 72px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.post-navigation-link,
+.post-navigation-link:visited {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 18px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.post-navigation-link:hover {
+  color: var(--accent-bright);
+  background: var(--surface-raised);
+  border-color: #30415d;
+}
+
+.post-navigation-newer {
+  grid-column: 2;
+  text-align: right;
+}
+
+.post-navigation-label {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 hr {
@@ -354,6 +525,46 @@ hr {
 
   .home > p:first-child {
     margin-bottom: 48px;
+  }
+
+  .post-navigation {
+    grid-template-columns: 1fr;
+  }
+
+  .post-navigation-newer {
+    grid-column: 1;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .post-layout {
+    display: block;
+  }
+
+  .post-toc {
+    display: none;
+  }
+
+  .post-toc-mobile:not([hidden]) {
+    display: block;
+    margin: -16px 0 42px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .post-toc-mobile summary {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 650;
+    cursor: pointer;
+  }
+
+  .post-toc-mobile .toc-nav {
+    gap: 1px;
+    margin-top: 12px;
   }
 }
 
