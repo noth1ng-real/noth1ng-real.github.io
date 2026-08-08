@@ -164,10 +164,19 @@ a:focus-visible {
   color: var(--accent-bright);
 }
 
-.post-list li > p {
+.post-list li > p,
+.post-list li > h1,
+.post-list li > h2,
+.post-list li > h3,
+.post-list li > h4,
+.post-list li > h5,
+.post-list li > h6 {
   margin: 10px 0 0;
   color: var(--muted);
   font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
 }
 
 .post-header {
