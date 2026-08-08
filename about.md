@@ -4,4 +4,8 @@ title: About
 permalink: /about/
 ---
 
-Cyber, ML, Engineering, & Astronomy
+0x11 year old
+
+Security researcher
+
+COYS

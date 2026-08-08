@@ -1,7 +1,7 @@
 ---
 layout: home
 title: Home
-list_title: Recent writing
+list_title: Recent Posts
 ---
 
-Thoughts on technology, the internet, and whatever else seems worth writing down.
+Security Research, Machine Learning, Engineering, & Astronomy
