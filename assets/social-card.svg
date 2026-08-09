@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#080b11"/>
+  <circle cx="1060" cy="80" r="320" fill="#0d182a" opacity=".8"/>
+  <path d="M88 104h1024M88 526h1024" stroke="#202a3a"/>
+  <path d="M88 104h132" stroke="#5b8def" stroke-width="4"/>
+  <text x="88" y="285" fill="#5b8def" font-family="ui-monospace, monospace" font-size="44" font-weight="700">//</text>
+  <text x="157" y="285" fill="#dce3ed" font-family="ui-monospace, monospace" font-size="58" font-weight="700">https's blog</text>
+  <text x="88" y="355" fill="#8c99aa" font-family="system-ui, sans-serif" font-size="27">Security · Machine Learning · Engineering · Astronomy</text>
+</svg>
