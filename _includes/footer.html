@@ -3,9 +3,15 @@
 
   <div class="wrapper">
     <p class="footer-line">
-      <span>&copy; {{ site.title | escape }} {{ site.time | date: "%Y" }}</span>
-      <span aria-hidden="true">·</span>
-      <a href="{{ "/feed.xml" | relative_url }}">Subscribe via RSS</a>
+      <span class="footer-copyright">&copy; {{ site.title | escape }} {{ site.time | date: "%Y" }}</span>
+      <span class="footer-separator" aria-hidden="true">·</span>
+      <a class="footer-rss" href="{{ "/feed.xml" | relative_url }}">
+        <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false">
+          <circle cx="5" cy="19" r="2"></circle>
+          <path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"></path>
+        </svg>
+        <span>Subscribe via RSS</span>
+      </a>
     </p>
   </div>
 </footer>

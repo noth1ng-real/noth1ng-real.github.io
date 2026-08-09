@@ -1338,11 +1338,12 @@ hr {
 }
 
 .site-footer {
-  padding: 20px 0;
+  padding: 18px 0;
   color: var(--muted);
   background: var(--background);
   border-top: 1px solid var(--border);
-  font-size: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
 }
 
 .footer-line {
@@ -1361,6 +1362,23 @@ hr {
 
 .footer-line a:hover {
   color: var(--accent-bright);
+}
+
+.footer-separator {
+  color: #536072;
+}
+
+.footer-rss {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.footer-rss svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 2;
 }
 
 @media screen and (max-width: 600px) {
