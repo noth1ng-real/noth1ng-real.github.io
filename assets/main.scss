@@ -549,6 +549,19 @@ a:focus-visible {
   color: var(--accent-bright);
 }
 
+.home .post-tags a,
+.home .post-tags a:visited {
+  padding: 4px 9px;
+  background: rgba(91, 141, 239, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.home .post-tags a:hover {
+  background: rgba(91, 141, 239, 0.11);
+  border-color: #3b5278;
+}
+
 .home .feed-subscribe,
 .home .rss-subscribe {
   display: none;
@@ -1266,6 +1279,17 @@ hr {
   border-top: 1px solid var(--border);
 }
 
+.post-content:has(> .archive) {
+  max-width: none;
+}
+
+.archive-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: clamp(48px, 7vw, 88px);
+  align-items: start;
+}
+
 .archive h2 {
   margin: 48px 0 10px;
   color: var(--muted);
@@ -1283,8 +1307,14 @@ hr {
   display: grid;
   grid-template-columns: 70px 1fr;
   gap: 18px;
+  align-items: center;
   padding: 15px 0;
   border-top: 1px solid var(--border);
+}
+
+.archive-item[hidden],
+.archive-year[hidden] {
+  display: none;
 }
 
 .archive-item time {
@@ -1304,7 +1334,10 @@ hr {
 }
 
 .archive-filter {
-  margin-bottom: 52px;
+  position: sticky;
+  top: 112px;
+  margin: 0;
+  padding-top: 2px;
 }
 
 .archive-filter > p {
@@ -1348,7 +1381,7 @@ hr {
 
 .archive-filter-status {
   min-height: 1.5em;
-  margin: -30px 0 30px;
+  margin: 14px 0 0;
   color: var(--muted);
   font-size: 12px;
 }
@@ -1357,6 +1390,7 @@ hr {
   display: flex;
   justify-content: space-between;
   gap: 24px;
+  align-items: center;
 }
 
 .archive-item-tags {
@@ -1364,6 +1398,7 @@ hr {
   color: var(--muted);
   font-family: var(--font-mono);
   font-size: 11px;
+  line-height: 1.4;
 }
 
 .empty-state {
@@ -1538,6 +1573,20 @@ hr {
 }
 
 @media screen and (max-width: 900px) {
+  .archive-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .archive-posts {
+    grid-row: 2;
+  }
+
+  .archive-filter {
+    position: static;
+    grid-row: 1;
+  }
+
   .post-layout {
     display: block;
   }
