@@ -21,6 +21,10 @@
         {% endfor %}
 
         <div class="global-search" data-global-search data-index-url="{{ "/assets/search.json" | relative_url }}">
+          <svg class="global-search-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="10.8" cy="10.8" r="6.8"></circle>
+            <path d="m16 16 4.5 4.5"></path>
+          </svg>
           <input type="search" aria-label="Search posts" placeholder="Search posts…" autocomplete="off" spellcheck="false" aria-expanded="false">
           <kbd aria-hidden="true">/</kbd>
           <div class="global-search-panel" hidden>

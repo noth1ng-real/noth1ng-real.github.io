@@ -22,6 +22,7 @@
 
 html {
   background: var(--background);
+  overflow-y: scroll;
   scrollbar-color: var(--border) var(--background);
 }
 
@@ -64,6 +65,10 @@ a:focus-visible {
 }
 
 .site-header {
+  position: sticky;
+  z-index: 500;
+  top: 0;
+  width: 100%;
   height: 72px;
   background: rgba(8, 11, 17, 0.88);
   border-top: 0;
@@ -130,29 +135,20 @@ a:focus-visible {
   line-height: normal;
 }
 
-.global-search::before {
+.global-search-icon {
   position: absolute;
   z-index: 1;
-  left: 1px;
-  width: 10px;
-  height: 10px;
-  border: 1.5px solid var(--muted);
-  border-radius: 50%;
-  content: "";
+  left: 0;
+  width: 16px !important;
+  min-width: 16px;
+  height: 16px !important;
+  color: var(--muted);
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 1.75;
+  vector-effect: non-scaling-stroke;
   pointer-events: none;
-}
-
-.global-search::after {
-  position: absolute;
-  z-index: 1;
-  left: 12px;
-  width: 6px;
-  height: 1.5px;
-  background: var(--muted);
-  content: "";
-  pointer-events: none;
-  transform: rotate(45deg);
-  transform-origin: left center;
 }
 
 .global-search input {
