@@ -728,6 +728,10 @@ a:focus-visible {
   scroll-margin-top: 100px;
 }
 
+.post-content > h2:first-child {
+  margin-top: 0;
+}
+
 .post-content h4 {
   margin-top: 1.8em;
   margin-bottom: 0.45em;
