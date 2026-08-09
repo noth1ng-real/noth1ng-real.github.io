@@ -36,23 +36,6 @@ layout: default
       <div class="post-content e-content" itemprop="articleBody">
         {{ content }}
       </div>
-
-      {% if page.previous or page.next %}
-        <nav class="post-navigation" aria-label="More posts">
-          {% if page.previous %}
-            <a class="post-navigation-link post-navigation-older" href="{{ page.previous.url | relative_url }}">
-              <span class="post-navigation-label">Older post</span>
-              <span>{{ page.previous.title | escape }}</span>
-            </a>
-          {% endif %}
-          {% if page.next %}
-            <a class="post-navigation-link post-navigation-newer" href="{{ page.next.url | relative_url }}">
-              <span class="post-navigation-label">Newer post</span>
-              <span>{{ page.next.title | escape }}</span>
-            </a>
-          {% endif %}
-        </nav>
-      {% endif %}
     </div>
 
     <aside class="post-toc" hidden>
