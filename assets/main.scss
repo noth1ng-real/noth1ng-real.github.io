@@ -1210,6 +1210,117 @@ hr {
   font-size: 11px;
 }
 
+.about-profile {
+  max-width: 780px;
+  margin-bottom: 64px;
+}
+
+.about-lede {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 450;
+  letter-spacing: -0.035em;
+  line-height: 1.38;
+  text-wrap: balance;
+}
+
+.about-lede strong {
+  font-weight: 720;
+}
+
+.about-age {
+  color: var(--accent-bright);
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  letter-spacing: -0.03em;
+}
+
+.about-copy {
+  max-width: 620px;
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.about-section {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: clamp(28px, 6vw, 72px);
+  padding: 30px 0 34px;
+  border-top: 1px solid var(--border);
+}
+
+.about-section h2 {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.about-focus-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-focus-list li {
+  padding: 12px 0;
+  color: var(--text);
+  border-bottom: 1px solid rgba(32, 42, 58, 0.7);
+  font-size: 15px;
+  font-weight: 550;
+}
+
+.about-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 32px;
+}
+
+.about-links a,
+.about-links a:visited {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+  padding: 12px 0;
+  color: var(--text);
+  border-bottom: 1px solid rgba(32, 42, 58, 0.7);
+  font-size: 15px;
+  font-weight: 550;
+  text-decoration: none;
+}
+
+.about-links a:hover {
+  color: var(--accent-bright);
+  border-color: #3b5278;
+}
+
+.about-links small {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.about-signoff {
+  margin: 48px 0 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .empty-state {
   color: var(--muted);
 }
@@ -1378,6 +1489,29 @@ hr {
 
   .post-card-featured.post-card-has-image .post-card-body {
     grid-row: 1;
+  }
+
+  .about-profile {
+    margin-bottom: 48px;
+  }
+
+  .about-section {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 26px 0 30px;
+  }
+
+  .about-focus-list,
+  .about-links {
+    grid-template-columns: 1fr;
+  }
+
+  .about-links {
+    gap: 0;
+  }
+
+  .about-signoff {
+    margin-top: 36px;
   }
 
   .post-navigation {
