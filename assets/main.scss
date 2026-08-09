@@ -757,6 +757,7 @@ a:focus-visible {
   border: 1px solid var(--border);
   border-radius: 5px;
   text-decoration: none;
+  white-space: nowrap;
   transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
 }
 
