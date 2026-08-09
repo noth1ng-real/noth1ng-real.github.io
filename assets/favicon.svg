@@ -1,16 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#080b11"/>
+  <defs>
+    <mask id="crescent">
+      <rect width="64" height="64" fill="#000"/>
+      <circle cx="29" cy="34" r="25" fill="#fff"/>
+      <circle cx="36" cy="31" r="19" fill="#000"/>
+    </mask>
+  </defs>
 
-  <!-- Low-poly bodywork surrounding a single headlight. -->
-  <path d="M7 43 13 25 29 13 51 18 58 34 49 50H16Z" fill="#151c28"/>
-  <path d="m13 25 16-12-4 15-18 15Z" fill="#253044"/>
-  <path d="m29 13 22 5-15 9-11 1Z" fill="#101722"/>
-  <path d="m51 18 7 16-19-7Z" fill="#303b4d"/>
-  <path d="m39 27 19 7-9 16-15-13Z" fill="#1c2636"/>
-  <path d="M7 43 25 28l9 9-18 13Z" fill="#0d131d"/>
+  <!-- Transparent eclipse mark: dark core, icy crescent, blue lower rim. -->
+  <circle cx="34" cy="33" r="19" fill="#080b11"/>
+  <circle cx="29" cy="34" r="25" fill="#dce8ff" mask="url(#crescent)"/>
+  <path d="M12 44c8 13 29 18 43 4" fill="none" stroke="#5b8def" stroke-linecap="round" stroke-width="4"/>
 
-  <!-- The light is deliberately oversized for 16px legibility. -->
-  <path d="m12 36 13-8h12l-7 11-18 4Z" fill="#5b8def"/>
-  <path d="m16 36 10-5h6l-4 5-12 3Z" fill="#dce8ff"/>
-  <path d="m12 43 18-4 4-6-4 10-16 4Z" fill="#2558bc" opacity=".75"/>
+  <!-- One bold star remains legible at 16px. -->
+  <path d="m51 5 2.1 6.9L60 14l-6.9 2.1L51 23l-2.1-6.9L42 14l6.9-2.1Z" fill="#fff"/>
 </svg>
