@@ -157,22 +157,22 @@ a:focus-visible {
 
 .site-title,
 .site-title:visited {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
   color: var(--text);
   font-family: var(--font-mono);
   font-size: 18px;
   font-weight: 650;
   letter-spacing: -0.03em;
-  line-height: 72px;
+  line-height: 1;
+  text-decoration: none;
 }
 
-.site-title::before {
-  margin-right: 8px;
-  color: #5b8def;
-  background: linear-gradient(90deg, #dce8ff 0 48%, #5b8def 52% 100%);
-  background-clip: text;
-  content: "//";
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.site-mark {
+  flex: none;
+  overflow: visible;
+  filter: drop-shadow(0 0 5px rgba(91, 141, 239, 0.16));
 }
 
 .site-nav {
@@ -718,6 +718,48 @@ a:focus-visible {
 .page-heading {
   margin-bottom: 40px;
   font-size: clamp(34px, 6vw, 46px);
+}
+
+.about-socials {
+  margin-top: 44px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.about-socials-label {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.about-socials ul {
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  list-style: none;
+}
+
+.about-socials a,
+.about-socials a:visited {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 550;
+  text-decoration: none;
+}
+
+.about-socials a span {
+  margin-left: 3px;
+  color: var(--muted);
+  transition: color 150ms ease;
+}
+
+.about-socials a:hover,
+.about-socials a:hover span {
+  color: var(--accent-bright);
 }
 
 .post-content h2 {
@@ -1403,7 +1445,7 @@ hr {
     max-width: calc(100vw - 92px);
     overflow: hidden;
     font-size: 16px;
-    line-height: 64px;
+    line-height: 1;
     text-overflow: ellipsis;
     white-space: nowrap;
   }

@@ -1,6 +1,20 @@
 <header class="site-header" role="banner">
   <div class="wrapper">
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}"{% if page.url == "/" %} aria-current="page"{% endif %}>{{ site.title | escape }}</a>
+    <a class="site-title" rel="author" href="{{ "/" | relative_url }}"{% if page.url == "/" %} aria-current="page"{% endif %}>
+      <svg class="site-mark" viewBox="0 0 36 28" width="28" height="22" aria-hidden="true" focusable="false">
+        <path d="M2 18 8 6l10-4 7 5 9 3-5 13-13 3Z" fill="#101722"/>
+        <path d="m8 6 10-4-3 10-13 6Z" fill="#34445c"/>
+        <path d="m18 2 7 5-10 5Z" fill="#e8edf5"/>
+        <path d="m25 7 9 3-12 5-7-3Z" fill="#566579"/>
+        <path d="m22 15 12-5-5 13-8-4Z" fill="#1d2939"/>
+        <path d="m5 17 9-5 7 3-5 7-11 2Z" fill="#f4f7fb"/>
+        <path d="m21 15 9-3-3 7-8 1Z" fill="#dce8ff"/>
+        <path d="m6 22 10-2 5-5-5 8-10 2Z" fill="#5b8def"/>
+        <path d="m26 18 4-6 2 1-4 6Z" fill="#c93cff"/>
+        <path d="m12 11 3-1-2 4-3 1Z" fill="#38d6e8"/>
+      </svg>
+      <span>{{ site.title | escape }}</span>
+    </a>
 
     <nav class="site-nav" aria-label="Main navigation">
       <input type="checkbox" id="nav-trigger" class="nav-trigger">
