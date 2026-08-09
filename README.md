@@ -47,6 +47,11 @@ or `![[embeds]]`. Reference an image with:
 ![Useful description](/assets/images/post-title/example.png)
 ```
 
+The title in the front matter becomes the page's `#` heading automatically.
+Start sections in the post body with `##` and subsections with `###`. Those
+headings are included in the table of contents; do not repeat the title with
+another `#` heading.
+
 List unfinished work with:
 
 ```sh

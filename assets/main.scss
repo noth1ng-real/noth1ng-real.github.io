@@ -167,8 +167,12 @@ a:focus-visible {
 
 .site-title::before {
   margin-right: 8px;
-  color: var(--accent);
+  color: #5b8def;
+  background: linear-gradient(90deg, #dce8ff 0 48%, #5b8def 52% 100%);
+  background-clip: text;
   content: "//";
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .site-nav {
@@ -746,7 +750,7 @@ a:focus-visible {
 .heading-anchor,
 .heading-anchor:visited {
   margin-left: 10px;
-  color: var(--muted);
+  color: #536072;
   font-size: 0.7em;
   font-weight: 500;
   text-decoration: none;
