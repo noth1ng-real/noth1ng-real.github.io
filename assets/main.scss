@@ -170,9 +170,27 @@ a:focus-visible {
 }
 
 .site-mark {
+  display: block;
   flex: none;
   overflow: visible;
   filter: drop-shadow(0 0 5px rgba(91, 141, 239, 0.16));
+  opacity: 1;
+  visibility: visible;
+}
+
+.site-mark-light {
+  fill: none;
+  stroke: #f4f7fb;
+  stroke-linecap: square;
+  stroke-linejoin: bevel;
+  stroke-width: 3.2;
+}
+
+.site-mark-blue {
+  fill: none;
+  stroke: #5b8def;
+  stroke-linecap: square;
+  stroke-width: 1.5;
 }
 
 .site-nav {
@@ -738,28 +756,37 @@ a:focus-visible {
 
 .about-socials ul {
   display: flex;
-  gap: 24px;
+  flex-direction: column;
+  gap: 10px;
   margin: 0;
+  padding: 0;
   list-style: none;
 }
 
 .about-socials a,
 .about-socials a:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
   color: var(--text);
-  font-size: 14px;
-  font-weight: 550;
+  border: 1px solid var(--border);
+  border-radius: 5px;
   text-decoration: none;
+  transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
 }
 
-.about-socials a span {
-  margin-left: 3px;
-  color: var(--muted);
-  transition: color 150ms ease;
+.about-socials svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
 }
 
-.about-socials a:hover,
-.about-socials a:hover span {
+.about-socials a:hover {
   color: var(--accent-bright);
+  background: rgba(91, 141, 239, 0.06);
+  border-color: #3b5278;
 }
 
 .post-content h2 {
