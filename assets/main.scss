@@ -767,6 +767,12 @@ a:focus-visible {
   fill: currentColor;
 }
 
+.about-socials a[aria-label="Discord server"] svg {
+  width: 21px;
+  height: 21px;
+  margin: 0 -2px;
+}
+
 .about-socials a:hover {
   color: var(--accent-bright);
   background: rgba(91, 141, 239, 0.06);
