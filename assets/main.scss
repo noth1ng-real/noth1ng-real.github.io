@@ -169,28 +169,10 @@ a:focus-visible {
   text-decoration: none;
 }
 
-.site-mark {
-  display: block;
+.site-prompt {
   flex: none;
-  overflow: visible;
-  filter: drop-shadow(0 0 5px rgba(91, 141, 239, 0.16));
-  opacity: 1;
-  visibility: visible;
-}
-
-.site-mark-light {
-  fill: none;
-  stroke: #f4f7fb;
-  stroke-linecap: square;
-  stroke-linejoin: bevel;
-  stroke-width: 3.2;
-}
-
-.site-mark-blue {
-  fill: none;
-  stroke: #5b8def;
-  stroke-linecap: square;
-  stroke-width: 1.5;
+  color: var(--accent-bright);
+  font-weight: 600;
 }
 
 .site-nav {
@@ -766,10 +748,11 @@ a:focus-visible {
 .about-socials a,
 .about-socials a:visited {
   display: inline-flex;
+  gap: 10px;
   align-items: center;
-  justify-content: center;
-  width: 34px;
+  width: 120px;
   height: 34px;
+  padding: 0 10px;
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: 5px;
