@@ -1342,7 +1342,12 @@ hr {
   }
 
   .site-title {
+    max-width: calc(100vw - 92px);
+    overflow: hidden;
+    font-size: 16px;
     line-height: 64px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .site-nav {
@@ -1399,8 +1404,25 @@ hr {
     margin-top: -8px;
   }
 
+  .home-section + .home-section {
+    margin-top: 52px;
+  }
+
+  .section-heading-row {
+    margin-bottom: 18px;
+  }
+
   .post-card-grid {
     grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+
+  .post-card {
+    padding-top: 18px;
+  }
+
+  .post-card-featured {
+    padding: 24px 0;
   }
 
   .post-card-body,
@@ -1433,6 +1455,11 @@ hr {
   .post-navigation-newer {
     grid-column: 1;
     text-align: left;
+  }
+
+  .footer-line {
+    flex-wrap: wrap;
+    row-gap: 2px;
   }
 }
 
@@ -1471,6 +1498,12 @@ hr {
   .wrapper {
     padding-right: 32px;
     padding-left: 32px;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 760px) {
+  .post-card-grid {
+    grid-template-columns: 1fr;
   }
 }
 
