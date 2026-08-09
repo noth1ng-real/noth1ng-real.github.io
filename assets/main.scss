@@ -750,7 +750,7 @@ a:focus-visible {
   display: inline-flex;
   gap: 10px;
   align-items: center;
-  width: 154px;
+  width: 180px;
   height: 34px;
   padding: 0 10px;
   color: var(--text);
@@ -762,15 +762,16 @@ a:focus-visible {
 }
 
 .about-socials svg {
+  flex: none;
   width: 17px;
   height: 17px;
   fill: currentColor;
 }
 
 .about-socials a[aria-label="Discord server"] svg {
-  width: 21px;
-  height: 21px;
-  margin: 0 -2px;
+  width: 24px;
+  height: 24px;
+  margin: 0 -3.5px;
 }
 
 .about-socials a:hover {
