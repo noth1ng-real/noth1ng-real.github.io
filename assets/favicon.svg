@@ -1,17 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <mask id="crescent">
-      <rect width="64" height="64" fill="#000"/>
-      <circle cx="29" cy="34" r="25" fill="#fff"/>
-      <circle cx="36" cy="31" r="19" fill="#000"/>
-    </mask>
-  </defs>
+  <!-- Two broad trails remain distinct when reduced to 16px. -->
+  <path d="M4 55 29 24l9 9L10 60Z" fill="#356fdc"/>
+  <path d="M3 40 27 19l7 7L10 47Z" fill="#82aaff"/>
 
-  <!-- Transparent eclipse mark: dark core, icy crescent, blue lower rim. -->
-  <circle cx="34" cy="33" r="19" fill="#080b11"/>
-  <circle cx="29" cy="34" r="25" fill="#dce8ff" mask="url(#crescent)"/>
-  <path d="M12 44c8 13 29 18 43 4" fill="none" stroke="#5b8def" stroke-linecap="round" stroke-width="4"/>
-
-  <!-- One bold star remains legible at 16px. -->
-  <path d="m51 5 2.1 6.9L60 14l-6.9 2.1L51 23l-2.1-6.9L42 14l6.9-2.1Z" fill="#fff"/>
+  <!-- A deliberately simple four-facet meteor. -->
+  <path d="m27 18 14-11 15 6 5 14-11 14-16-4-9-10Z" fill="#252f3d"/>
+  <path d="m27 18 14-11 3 16-19 4Z" fill="#748195"/>
+  <path d="m41 7 15 6-12 10Z" fill="#a7b1bf"/>
+  <path d="m44 23 12-10 5 14-11 14Z" fill="#151c27"/>
+  <path d="m25 27 19-4 6 18-16-4Z" fill="#3f4c5e"/>
 </svg>

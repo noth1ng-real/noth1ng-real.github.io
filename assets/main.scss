@@ -763,15 +763,9 @@ a:focus-visible {
 
 .about-socials svg {
   flex: none;
-  width: 17px;
-  height: 17px;
+  width: 18px;
+  height: 18px;
   fill: currentColor;
-}
-
-.about-socials a[aria-label="Discord server"] svg {
-  width: 24px;
-  height: 24px;
-  margin: 0 -3.5px;
 }
 
 .about-socials a:hover {
