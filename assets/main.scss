@@ -562,6 +562,10 @@ a:focus-visible {
   border-color: #3b5278;
 }
 
+.home .post-tags a::before {
+  content: none;
+}
+
 .home .feed-subscribe,
 .home .rss-subscribe {
   display: none;
@@ -1313,8 +1317,12 @@ hr {
 }
 
 .archive-item[hidden],
-.archive-year[hidden] {
-  display: none;
+.archive-year[hidden],
+.archive-year-group[hidden],
+.archive-item.is-filtered-out,
+.archive-year.is-filtered-out,
+.archive-year-group.is-filtered-out {
+  display: none !important;
 }
 
 .archive-item time {
@@ -1381,9 +1389,13 @@ hr {
 
 .archive-filter-status {
   min-height: 1.5em;
-  margin: 14px 0 0;
+  margin: 0 0 28px;
   color: var(--muted);
   font-size: 12px;
+}
+
+.archive-posts > .archive-year-group:first-of-type .archive-year {
+  margin-top: 0;
 }
 
 .archive-item > div {
