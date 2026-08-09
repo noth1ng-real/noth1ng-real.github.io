@@ -3,8 +3,34 @@
 
 @import "minima";
 
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/assets/fonts/InterVariable.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/JetBrainsMono-SemiBold.woff2") format("woff2");
+}
+
 :root {
   color-scheme: dark;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --background: #080b11;
   --surface: #0d121c;
   --surface-raised: #111927;
@@ -29,11 +55,14 @@ html {
 body {
   background: var(--background);
   color: var(--text);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  font-family: var(--font-sans);
   font-size: 17px;
   line-height: 1.75;
+  letter-spacing: -0.006em;
+  font-optical-sizing: auto;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
@@ -101,7 +130,7 @@ a:focus-visible {
 .site-title,
 .site-title:visited {
   color: var(--text);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 18px;
   font-weight: 650;
   letter-spacing: -0.03em;
@@ -129,7 +158,9 @@ a:focus-visible {
 
 .site-nav .page-link {
   color: var(--muted);
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   text-decoration: none;
 }
 
@@ -262,7 +293,7 @@ a:focus-visible {
 .global-search-result-meta {
   overflow: hidden;
   color: var(--muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -304,6 +335,7 @@ a:focus-visible {
 .section-heading {
   margin: 0;
   color: var(--muted);
+  font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 650;
   letter-spacing: 0.12em;
@@ -394,7 +426,7 @@ a:focus-visible {
   display: flex;
   gap: 8px;
   color: var(--muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
 }
 
@@ -404,6 +436,7 @@ a:focus-visible {
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.25;
+  text-wrap: balance;
 }
 
 .post-card-featured .post-card-title {
@@ -451,7 +484,7 @@ a:focus-visible {
   background: transparent;
   border: 0;
   border-radius: 0;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
   line-height: 1.5;
   text-decoration: none;
@@ -493,7 +526,7 @@ a:focus-visible {
 
 .post-meta {
   color: var(--muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.01em;
 }
@@ -575,6 +608,7 @@ a:focus-visible {
 .post-toc-title {
   margin: 0 0 14px;
   color: var(--text);
+  font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -621,14 +655,15 @@ a:focus-visible {
 .post-content h2,
 .post-content h3 {
   color: var(--text);
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  font-weight: 720;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
 }
 
 .post-title {
   margin-bottom: 12px;
-  font-size: clamp(38px, 8vw, 58px);
-  line-height: 1.1;
+  font-size: clamp(40px, 7vw, 62px);
+  line-height: 1.06;
 }
 
 .page-heading {
@@ -637,14 +672,18 @@ a:focus-visible {
 }
 
 .post-content h2 {
-  margin-top: 2.1em;
-  font-size: 28px;
+  margin-top: 2.35em;
+  margin-bottom: 0.65em;
+  font-size: clamp(26px, 4vw, 30px);
+  line-height: 1.22;
   scroll-margin-top: 100px;
 }
 
 .post-content h3 {
-  margin-top: 1.8em;
-  font-size: 22px;
+  margin-top: 2em;
+  margin-bottom: 0.55em;
+  font-size: clamp(20px, 3vw, 23px);
+  line-height: 1.3;
   scroll-margin-top: 100px;
 }
 
@@ -665,10 +704,29 @@ a:focus-visible {
   opacity: 1;
 }
 
+.post-content {
+  max-width: 74ch;
+  font-size: 17.5px;
+  line-height: 1.82;
+}
+
 .post-content p,
 .post-content ul,
 .post-content ol {
-  margin-bottom: 1.4em;
+  margin-bottom: 1.5em;
+}
+
+.post-content p {
+  text-wrap: pretty;
+}
+
+.post-content li + li {
+  margin-top: 0.35em;
+}
+
+.post-content strong {
+  color: #edf2f8;
+  font-weight: 650;
 }
 
 .post-content figure {
@@ -891,6 +949,8 @@ code {
   border: 1px solid var(--border);
   border-radius: 5px;
   color: #c8d5e8;
+  font-family: var(--font-mono);
+  font-feature-settings: "liga", "calt";
 }
 
 code {
@@ -970,6 +1030,7 @@ pre code {
 
 .post-navigation-label {
   color: var(--muted);
+  font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 650;
   letter-spacing: 0.1em;
@@ -985,6 +1046,7 @@ hr {
 .archive h2 {
   margin: 48px 0 10px;
   color: var(--muted);
+  font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1004,7 +1066,7 @@ hr {
 
 .archive-item time {
   color: var(--muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 13px;
 }
 
@@ -1025,6 +1087,7 @@ hr {
 .archive-filter > p {
   margin: 0 0 12px;
   color: var(--muted);
+  font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 650;
   letter-spacing: 0.1em;
@@ -1076,7 +1139,7 @@ hr {
 .archive-item-tags {
   flex: none;
   color: var(--muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
 }
 
