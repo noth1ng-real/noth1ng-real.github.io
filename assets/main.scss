@@ -27,9 +27,7 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(circle at 82% -10%, rgba(50, 88, 150, 0.12), transparent 420px),
-    var(--background);
+  background: var(--background);
   color: var(--text);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
@@ -288,40 +286,7 @@ a:focus-visible {
 }
 
 .home {
-  position: relative;
-  z-index: 0;
   margin-top: -20px;
-  isolation: isolate;
-}
-
-.home::before {
-  position: absolute;
-  z-index: -2;
-  top: -52px;
-  right: -32px;
-  left: -32px;
-  height: 360px;
-  background-image:
-    linear-gradient(rgba(91, 141, 239, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(91, 141, 239, 0.035) 1px, transparent 1px),
-    radial-gradient(circle at 78% 10%, rgba(57, 103, 183, 0.12), transparent 38%);
-  background-size: 38px 38px, 38px 38px, auto;
-  content: "";
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 95%);
-  mask-image: linear-gradient(to bottom, #000 0%, transparent 95%);
-  pointer-events: none;
-}
-
-.home::after {
-  position: absolute;
-  z-index: -1;
-  top: -52px;
-  left: 0;
-  width: 92px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-  content: "";
-  pointer-events: none;
 }
 
 .home-section + .home-section {
@@ -337,34 +302,12 @@ a:focus-visible {
 }
 
 .section-heading {
-  display: flex;
-  gap: 9px;
-  align-items: center;
   margin: 0;
   color: var(--muted);
   font-size: 13px;
   font-weight: 650;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-}
-
-.section-heading::before {
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  box-shadow: 0 0 10px rgba(91, 141, 239, 0.4);
-  content: "";
-  transform: rotate(45deg);
-}
-
-.section-heading-row > a {
-  color: var(--muted);
-  font-size: 13px;
-  text-decoration: none;
-}
-
-.section-heading-row > a:hover {
-  color: var(--accent-bright);
 }
 
 .post-card-grid {
@@ -382,12 +325,6 @@ a:focus-visible {
   min-width: 0;
   padding-top: 22px;
   border-top: 1px solid var(--border);
-  transition: border-color 180ms ease, transform 180ms ease;
-}
-
-.post-card:hover {
-  border-top-color: #3b5278;
-  transform: translateY(-2px);
 }
 
 .post-card-featured {
@@ -1233,17 +1170,6 @@ hr {
 
   .home {
     margin-top: -8px;
-  }
-
-  .home::before {
-    top: -40px;
-    right: -20px;
-    left: -20px;
-    background-size: 30px 30px, 30px 30px, auto;
-  }
-
-  .home::after {
-    top: -40px;
   }
 
   .post-card-grid {
