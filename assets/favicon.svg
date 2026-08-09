@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <!-- Four large facets: no outlines, gradients, or hidden dark details. -->
-  <path d="M32 1 42 22 32 32 22 22Z" fill="#82aaff"/>
-  <path d="M42 22 63 32 42 42 32 32Z" fill="#6f9cf4"/>
-  <path d="M32 32 42 42 32 63 22 42Z" fill="#5b8def"/>
-  <path d="M1 32 22 22 32 32 22 42Z" fill="#759ff2"/>
+  <path d="M32 1 40 24 32 32 24 24Z" fill="#79a5ff"/>
+  <path d="M40 24 63 32 40 40 32 32Z" fill="#4e92f2"/>
+  <path d="M32 32 40 40 32 63 24 40Z" fill="#3f73d9"/>
+  <path d="M1 32 24 24 32 32 24 40Z" fill="#5f70df"/>
 </svg>
