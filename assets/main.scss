@@ -81,6 +81,34 @@ body {
   border: 0 !important;
 }
 
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 12px;
+  left: 12px;
+  padding: 8px 12px;
+  color: var(--background);
+  background: var(--text);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(calc(-100% - 20px));
+  transition: transform 150ms ease;
+}
+
+.skip-link:visited {
+  color: var(--background);
+}
+
+.skip-link:focus {
+  color: var(--background);
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  transform: translateY(0);
+}
+
 .wrapper {
   max-width: 1180px;
   padding-right: 40px;
@@ -326,6 +354,10 @@ a:focus-visible {
 .page-content {
   padding: 72px 0 96px;
   animation: page-enter 420ms ease-out both;
+}
+
+.page-content:focus {
+  outline: none;
 }
 
 @keyframes page-enter {
