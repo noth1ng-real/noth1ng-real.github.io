@@ -3,16 +3,14 @@ layout: default
 ---
 
 <div class="home">
-  {% if content != empty %}
-    <div class="home-intro">{{ content }}</div>
-  {% endif %}
+  <h1 class="visually-hidden">{{ site.title | escape }}</h1>
 
   {% assign featured_post = site.posts | where: "featured", true | first %}
 
   {% if featured_post %}
     <section class="home-section" aria-labelledby="featured-heading">
       <div class="section-heading-row">
-        <h1 id="featured-heading" class="section-heading">Featured</h1>
+        <h2 id="featured-heading" class="section-heading">Featured</h2>
       </div>
       {% include post-card.html post=featured_post featured=true %}
     </section>
