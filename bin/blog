@@ -1,0 +1,164 @@
+#!/usr/bin/env ruby
+
+require "date"
+require "fileutils"
+require "json"
+require "yaml"
+
+ROOT = File.expand_path("..", __dir__)
+DRAFTS_DIR = File.join(ROOT, "_drafts")
+POSTS_DIR = File.join(ROOT, "_posts")
+IMAGES_DIR = File.join(ROOT, "assets", "images")
+TEMPLATE_PATH = File.join(ROOT, "_templates", "post.md")
+
+def fail_with(message)
+  warn "Error: #{message}"
+  exit 1
+end
+
+def slugify(title)
+  ascii = title.unicode_normalize(:nfkd).encode(
+    "ASCII",
+    invalid: :replace,
+    undef: :replace,
+    replace: ""
+  )
+
+  ascii
+    .downcase
+    .gsub(/[’']/, "")
+    .gsub(/[^a-z0-9]+/, "-")
+    .gsub(/\A-+|-+\z/, "")
+end
+
+def valid_slug!(slug)
+  fail_with("the post slug is empty or invalid") unless slug.match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/)
+end
+
+def read_front_matter(path)
+  text = File.read(path, encoding: "UTF-8")
+  match = text.match(/\A---\s*\n(.*?)\n---\s*(?:\n|\z)/m)
+  fail_with("#{path} does not contain valid YAML front matter") unless match
+
+  data = YAML.safe_load(match[1], permitted_classes: [Date, Time], aliases: false)
+  fail_with("#{path} front matter must be a YAML mapping") unless data.is_a?(Hash)
+  data
+rescue Psych::SyntaxError => error
+  fail_with("invalid YAML in #{path}: #{error.problem}")
+end
+
+def new_post(title)
+  fail_with("provide a title, for example: bin/blog new \"My Post\"") if title.nil? || title.strip.empty?
+
+  slug = slugify(title.strip)
+  valid_slug!(slug)
+  draft_path = File.join(DRAFTS_DIR, "#{slug}.md")
+  image_path = File.join(IMAGES_DIR, slug)
+
+  fail_with("draft already exists: _drafts/#{slug}.md") if File.exist?(draft_path)
+  fail_with("post already exists for this slug") if Dir.glob(File.join(POSTS_DIR, "????-??-??-#{slug}.md")).any?
+  fail_with("missing template: _templates/post.md") unless File.file?(TEMPLATE_PATH)
+
+  content = File.read(TEMPLATE_PATH, encoding: "UTF-8")
+    .gsub("__TITLE__", JSON.generate(title.strip))
+    .gsub("__SLUG__", slug)
+
+  FileUtils.mkdir_p(DRAFTS_DIR)
+  File.open(draft_path, File::WRONLY | File::CREAT | File::EXCL) { |file| file.write(content) }
+
+  FileUtils.mkdir_p(image_path)
+  FileUtils.touch(File.join(image_path, ".gitkeep"))
+
+  puts "Created _drafts/#{slug}.md"
+  puts "Images: assets/images/#{slug}/"
+  puts "Open the draft in Obsidian and complete its excerpt before publishing."
+end
+
+def list_drafts
+  drafts = Dir.glob(File.join(DRAFTS_DIR, "*.md")).sort
+
+  if drafts.empty?
+    puts "No drafts."
+    return
+  end
+
+  drafts.each do |path|
+    slug = File.basename(path, ".md")
+    data = read_front_matter(path)
+    title = data["title"].to_s.strip
+    title = "(untitled)" if title.empty?
+    puts "#{slug.ljust(28)} #{title}"
+  end
+end
+
+def publish_post(identifier)
+  fail_with("provide a draft slug, for example: bin/blog publish my-post") if identifier.nil? || identifier.strip.empty?
+
+  slug = File.basename(identifier.strip, ".md")
+  valid_slug!(slug)
+  draft_path = File.join(DRAFTS_DIR, "#{slug}.md")
+  fail_with("draft not found: _drafts/#{slug}.md") unless File.file?(draft_path)
+
+  data = read_front_matter(draft_path)
+  fail_with("draft title cannot be empty") if data["title"].to_s.strip.empty?
+  fail_with("draft excerpt cannot be empty") if data["excerpt"].to_s.strip.empty?
+
+  filename = "#{Date.today.strftime("%Y-%m-%d")}-#{slug}.md"
+  destination = File.join(POSTS_DIR, filename)
+  fail_with("published post already exists: _posts/#{filename}") if File.exist?(destination)
+
+  FileUtils.mkdir_p(POSTS_DIR)
+  FileUtils.mv(draft_path, destination)
+
+  puts "Published _posts/#{filename}"
+  puts "Review the change with git diff, then commit and push when ready."
+end
+
+def setup
+  Dir.chdir(ROOT) do
+    fail_with("Bundler is not installed") unless system("bundle", "--version", out: File::NULL, err: File::NULL)
+    fail_with("could not configure Bundler") unless system("bundle", "config", "set", "--local", "path", "vendor/bundle")
+    fail_with("dependency installation failed") unless system("bundle", "install")
+  end
+end
+
+def preview
+  Dir.chdir(ROOT) do
+    unless system("bundle", "check", out: File::NULL, err: File::NULL)
+      fail_with("preview dependencies are missing; run bin/blog setup first")
+    end
+
+    puts "Previewing published posts and drafts at http://127.0.0.1:4000"
+    exec("bundle", "exec", "jekyll", "serve", "--drafts", "--livereload")
+  end
+end
+
+def usage
+  puts <<~HELP
+    Usage:
+      bin/blog new "Post title"  Create a draft and image directory
+      bin/blog drafts            List unfinished drafts
+      bin/blog publish SLUG      Move a validated draft into _posts
+      bin/blog setup             Install local preview dependencies
+      bin/blog preview           Preview posts and drafts with live reload
+  HELP
+end
+
+command = ARGV.shift
+
+case command
+when "new"
+  new_post(ARGV.join(" "))
+when "drafts"
+  list_drafts
+when "publish"
+  publish_post(ARGV.shift)
+when "setup"
+  setup
+when "preview"
+  preview
+when "help", "--help", "-h", nil
+  usage
+else
+  fail_with("unknown command: #{command}")
+end
