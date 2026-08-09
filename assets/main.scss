@@ -157,6 +157,7 @@ a:focus-visible {
 }
 
 .site-nav .page-link {
+  position: relative;
   color: var(--muted);
   font-size: 14px;
   font-weight: 500;
@@ -164,8 +165,31 @@ a:focus-visible {
   text-decoration: none;
 }
 
+.site-nav .page-link::after {
+  position: absolute;
+  right: 0;
+  bottom: -9px;
+  left: 0;
+  height: 1px;
+  background: var(--accent);
+  content: "";
+  opacity: 0;
+  transform: scaleX(0.4);
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
 .site-nav .page-link:hover {
   color: var(--text);
+}
+
+.site-nav .page-link.is-active {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.site-nav .page-link.is-active::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .site-nav .page-link + .page-link {
@@ -1443,6 +1467,12 @@ hr {
     display: block;
     margin: 0 !important;
     padding: 7px 0;
+  }
+
+  .site-nav .page-link::after {
+    right: auto;
+    bottom: 3px;
+    width: 24px;
   }
 
   .global-search {
