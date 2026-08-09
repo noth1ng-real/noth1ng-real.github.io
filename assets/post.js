@@ -136,15 +136,4 @@
     host.append(button);
   });
 
-  const progress = document.querySelector(".reading-progress-bar");
-  const updateProgress = () => {
-    const start = article.offsetTop;
-    const distance = article.offsetHeight - window.innerHeight;
-    const amount = distance > 0 ? (window.scrollY - start) / distance : 1;
-    progress.style.transform = `scaleX(${Math.min(1, Math.max(0, amount))})`;
-  };
-
-  document.addEventListener("scroll", updateProgress, { passive: true });
-  window.addEventListener("resize", updateProgress);
-  updateProgress();
 })();
