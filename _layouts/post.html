@@ -30,7 +30,7 @@ layout: default
   <div class="post-layout">
     <div class="post-main">
       <div class="post-content e-content" itemprop="articleBody">
-        {{ content }}
+        {{ content | replace: '<a href=', '<a target="_blank" rel="noopener noreferrer" href=' }}
       </div>
     </div>
 
