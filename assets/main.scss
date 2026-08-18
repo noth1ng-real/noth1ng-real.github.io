@@ -489,9 +489,10 @@ a:focus-visible {
 }
 
 .post-card-featured .post-card-title {
-  max-width: 760px;
+  max-width: none;
   font-size: clamp(28px, 4vw, 42px);
   line-height: 1.16;
+  text-wrap: pretty;
 }
 
 .post-card-title a,
@@ -513,7 +514,7 @@ a:focus-visible {
 }
 
 .post-card-featured .post-card-excerpt {
-  max-width: 640px;
+  max-width: none;
   margin-top: 12px;
   font-size: 15px;
 }
